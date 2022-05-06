@@ -1,0 +1,64 @@
+.marquee-wrapper{
+    text-align:center;
+  }
+  .marquee-wrapper .container{
+    overflow:hidden;
+  }
+
+  .img{
+    background-image: url(./Vector.svg);
+    width: 24px;
+    height: 24px;
+    margin: auto;
+}
+  .marquee-inner span{
+    float: left;
+    width: 50%;
+  }
+  .marquee-wrapper .marquee-block{
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    padding: 24px 48px;
+  }
+  .marquee-inner{
+    display: block;
+    width: 200%;
+    position: absolute;
+  }
+  .marquee-text {
+    font-family: 'Aeroport';
+    color: #000000;
+    font-size: 28px;
+    line-height: 32px;
+    margin-right: 48px;
+    margin-left: 48px;
+    text-decoration: none;
+  }
+  .marquee-inner.to-left{
+    animation: marqueeLeft 25s linear infinite;
+  }
+  .marquee-item{
+    width: auto;
+    height: auto;
+    display: inline-block;
+    align-items: center;
+    margin: 0 10px;
+    transition: all .2s ease-out;
+  }
+  @keyframes marqueeLeft{
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -100%;
+    }
+  }
+  @keyframes marqueeRight{
+    0% { 
+      left: -100%; 
+    }
+    100% {
+     left: 0; 
+    }
+  }
