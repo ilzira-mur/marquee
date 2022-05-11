@@ -19,7 +19,7 @@ body {
 
   .marquee .inner > * {
   white-space: nowrap;
-  padding: 0 4rem;
+  padding: 0 1rem;
   }
 
 
