@@ -6,90 +6,74 @@
   <link rel="stylesheet" href="./page.css">
   <title>Анимация</title>
   </head>
-<body class="page">
-  <div class="marquee-wrapper">
-    <div class="container">
-      <div class="marquee-block">
-        <div class="marquee-inner to-left">
-          <span>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="/">МЫ В РЕЙТИНГЕ</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="https://www.legal500.com/c/russia/white-collar-crime/">THE LEGAL 500</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="https://www.bestlawyers.com/current-edition/Russia">Best Lawyers</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="https://300.pravo.ru/company/215/">ПРАВО 300</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="https://club.forbes.ru/forbes-club-legal-research-juridicheskie-kompanii-rossii">Forbes</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" class="marquee-text" target="_blank" href="https://club.forbes.ru/forbes-club-legal-research-juridicheskie-kompanii-rossii">Коммерсантъ</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-          </span>
-          <span>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="/">МЫ В РЕЙТИНГЕ</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="https://www.legal500.com/c/russia/white-collar-crime/">THE LEGAL 500</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="https://www.bestlawyers.com/current-edition/Russia">Best Lawyers</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="https://300.pravo.ru/company/215/">ПРАВО 300</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" target="_blank" href="https://club.forbes.ru/forbes-club-legal-research-juridicheskie-kompanii-rossii">Forbes</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-            <div class="marquee-item">
-              <a class="marquee-text" class="marquee-text" target="_blank" href="https://club.forbes.ru/forbes-club-legal-research-juridicheskie-kompanii-rossii">Коммерсантъ</a>
-            </div>
-            <div class="marquee-item">
-              <img class="marquee-icon" src="./Vector.svg">
-            </div>
-          </span>
-        </div>
+  <body>
+    <div class="marquee">
+      <div class="inner">
+        <span>
+          <img class="img">
+          <a class="marquee-text" target="_blank" href="https://www.youtube.com/">МЫ В РЕЙТИНГЕ</a>
+          <img class="img">
+          <a class="marquee-text" target="_blank" href="https://www.youtube.com/">THE LEGAL 500</a>
+          <img class="img">
+          <a class="marquee-text" target="_blank" href="https://www.youtube.com/">Best Lawyers</a>
+          <img class="img">
+          <a class="marquee-text" target="_blank" href="https://www.youtube.com/">ПРАВО 300</a>
+          <img class="img">
+          <a class="marquee-text" target="_blank" href="https://www.youtube.com/">Forbes</a>
+          <img class="img">
+          <a class="marquee-text" target="_blank" href="https://www.youtube.com/">Коммерсантъ</a>
+        </span>
       </div>
     </div>
-  </div>
-</body>
+    <script>
+      function handleMarquee(){
+      	const marquee = document.querySelectorAll('.marquee');
+      	let speed = 4;
+      	let lastScrollPos = 0;
+      	let timer;
+      	
+      	marquee.forEach(function(el){
+      		const container = el.querySelector('.inner');
+      		const content = el.querySelector('.inner > *');
+      		const  elWidth = content.offsetWidth;
+      		
+      		
+      		let clone = content.cloneNode(true);
+      		container.appendChild(clone);
+      		
+      		let progress = 1;
+      		function loop(){
+      			progress = progress-speed;
+      			if(progress <= elWidth*-1) {progress=0;}
+      			container.style.transform = 'translateX(' + progress + 'px)';
+      			container.style.transform += 'skewX(' + speed*0.4 + 'deg)';
+      			
+      			window.requestAnimationFrame(loop);
+      		}
+      		loop();
+      	});
+      	
+      	window.addEventListener('scroll', function(){
+      		const maxScrollValue = 12;
+      		const newScrollPos = window.scrollY;
+      		let scrollValue = newScrollPos - lastScrollPos;
+      		
+      		
+      		if( scrollValue > maxScrollValue ) scrollValue = maxScrollValue;
+          else if( scrollValue < -maxScrollValue ) scrollValue = -maxScrollValue;
+      		
+      		speed = scrollValue;
+      		
+      		clearTimeout(timer);
+          timer = setTimeout(handleSpeedClear, 10);
+      	});
+      	
+      	function handleSpeedClear(){
+      		speed = 4;
+      	}
+      };
+      
+      handleMarquee();
+    </script>
+  </body>
 </html>
