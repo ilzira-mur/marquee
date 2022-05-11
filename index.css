@@ -1,4 +1,4 @@
-body {
+.body {
   font-family: 'Aeroport';
   }
 
@@ -20,6 +20,11 @@ body {
   .marquee .inner > * {
   white-space: nowrap;
   padding: 0 1rem;
+  
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
   }
 
  .img{
